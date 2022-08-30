@@ -7,14 +7,9 @@ const userLoginController = {
 
     await userLogin.LoginError(login, { email, password });
 
-    const result = await userLogin.login(email, password);
-
-    if (!result) {
-      return res.status(400).json({
-        message: 'Invalid fields',
-      });
-    }
-    res.status(200).json(result);
+    const { code, data } = await userLogin.login(email, password);
+    
+    res.status(code).json(data);
   },
 };
 
