@@ -1,5 +1,6 @@
 require('dotenv').config();
 const app = require('./api');
+const { validate } = require('./middleware/validate');
 
 require('express-async-errors');
 const loginController = require('./controllers/login');
@@ -15,6 +16,7 @@ app.get('/', (_request, response) => {
 });
 
 app.post('/login', loginController.login);
+app.get('/user', validate, usersController.getUsers);
 app.post('/user', usersController.postUsers);
 
 app.use('*', (req, res) => {
