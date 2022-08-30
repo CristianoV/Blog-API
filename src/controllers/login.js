@@ -5,6 +5,8 @@ const userLoginController = {
   login: async (req, res) => {
     const { email, password } = req.body;
 
+    console.log(email, password);
+
     await userLogin.LoginError(login, { email, password });
 
     const { code, data } = await userLogin.login(email, password);
