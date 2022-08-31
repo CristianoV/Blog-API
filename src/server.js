@@ -5,6 +5,7 @@ const { validate } = require('./middleware/validate');
 require('express-async-errors');
 const loginController = require('./controllers/login');
 const usersController = require('./controllers/users');
+const categoriesController = require('./controllers/categories');
 
 // não remova a variável `API_PORT` ou o `listen`
 const port = process.env.API_PORT || 3000;
@@ -16,6 +17,7 @@ app.get('/', (_request, response) => {
 });
 
 app.post('/login', loginController.login);
+app.post('/categories', validate, categoriesController.newCategory);
 app.get('/user', validate, usersController.getUsers);
 app.get('/user/:id', validate, usersController.getUsersById);
 app.post('/user', usersController.postUsers);
