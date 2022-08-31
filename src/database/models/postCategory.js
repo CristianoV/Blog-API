@@ -9,12 +9,21 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: false,
   });
 
-  // Character.associate = (models) => {
-  //   Character.belongsTo(models.Job, {
-  //     foreignKey: "jobId",
-  //     as: "job"
-  //   });
-  // };
+  PostCategories.associate = (models) => {
+    models.BlogPost.belongsToMany(models.Category, {
+      as: "Categories",
+      through: PostCategories,
+      foreignKey: "postId",
+      otherKey: "categoryId",
+    });
+    
+    models.Category.belongsToMany(models.BlogPost, {
+      as: "BlogPosts",
+      through: PostCategories,
+      foreignKey: "categoryId",
+      otherKey: "postId",
+    });
+  };
 
   return PostCategories;
 };
