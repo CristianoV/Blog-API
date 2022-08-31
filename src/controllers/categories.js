@@ -10,6 +10,12 @@ const categoriesController = {
 
         res.status(code).json(data);
     },
+    getCategories: async (req, res) => {
+        await usersService.validToken(req);
+        const { code, data } = await categoriesServices.getCategories();
+
+        res.status(code).json(data);
+    },
 };
 
 module.exports = categoriesController;
