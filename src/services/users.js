@@ -30,6 +30,16 @@ const usersService = {
 
     return { code: 201, data: { token } };
   },
+  getUsersById: async (id) => {
+    const result = await User.findOne({
+      where: { id },
+      attributes: { exclude: ['password'] },
+    });
+    if (!result) {
+      throw new NotFoundError('User does not exist', 404);
+    }
+    return { code: 200, data: result };
+  },
 };
 
 module.exports = usersService;
