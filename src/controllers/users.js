@@ -21,6 +21,12 @@ const usersController = {
     const { code, data } = await usersService.postUsers(body);
     res.status(code).json(data);
   },
+  getUsersById: async (req, res) => {
+    const { id } = req.params;
+    await usersService.validToken(req);
+    const { code, data } = await usersService.getUsersById(id);
+    res.status(code).json(data);
+  },
 };
 
 module.exports = usersController;
