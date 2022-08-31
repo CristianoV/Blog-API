@@ -16,12 +16,12 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: false,
   });
 
-  // User.associate = (models) => {Users
-  //   User.hasMany(models.blogpost, {
-  //     foreignKey: 'id',
-  //     as: 'BlogPosts'
-  //   });
-  // };
+  User.associate = (models) => {
+    User.hasMany(models.BlogPost, {
+      foreignKey: 'id',
+      as: 'BlogPost'
+    });
+  };
 
   return User;
 };
