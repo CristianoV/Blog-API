@@ -18,6 +18,7 @@ app.post('/login', login.login);
 app.post('/post', validate, post.newPost);
 app.get('/post', validate, post.allPost);
 app.get('/post/:id', validate, post.postById);
+app.put('/post/:id', validate, post.editPost);
 app.get('/categories', validate, categories.getCategories);
 app.post('/categories', validate, categories.newCategory);
 app.get('/user', validate, user.getUsers);
