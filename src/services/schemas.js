@@ -1,13 +1,15 @@
 const joi = require('joi');
 
+const REQUIRED = '400|Some required fields are missing';
+
 const login = joi.object({
   email: joi.string().min(1).required().messages({
-    'string.empty': '400|Some required fields are missing',
-    'any.required': '400|Some required fields are missing',
+    'string.empty': REQUIRED,
+    'any.required': REQUIRED,
   }),
   password: joi.string().required().messages({
-    'string.empty': '400|Some required fields are missing',
-    'any.required': '400|Some required fields are missing',
+    'string.empty': REQUIRED,
+    'any.required': REQUIRED,
   }),
 });
 
@@ -23,4 +25,20 @@ const newUser = joi.object({
   }),
 });
 
-module.exports = { login, newUser };
+// { title, content, categoryIds }, userId
+
+const newPostValidator = joi.object({
+  title: joi.string().min(1).messages({
+    'string.empty': REQUIRED,
+    'any.required': REQUIRED,
+  }),
+  content: joi.string().min(1).required().messages({
+    'string.empty': REQUIRED,
+    'any.required': REQUIRED,
+  }),
+  // categoryIds: joi.string().min(1).required().messages({
+  //   'any.required': '400|Some required fields are missing',
+  // }),
+});
+
+module.exports = { login, newUser, newPostValidator };
