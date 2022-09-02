@@ -25,8 +25,6 @@ const newUser = joi.object({
   }),
 });
 
-// { title, content, categoryIds }, userId
-
 const newPostValidator = joi.object({
   title: joi.string().min(1).messages({
     'string.empty': REQUIRED,
@@ -36,9 +34,6 @@ const newPostValidator = joi.object({
     'string.empty': REQUIRED,
     'any.required': REQUIRED,
   }),
-  // categoryIds: joi.string().min(1).required().messages({
-  //   'any.required': '400|Some required fields are missing',
-  // }),
 });
 
 module.exports = { login, newUser, newPostValidator };
