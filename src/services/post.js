@@ -23,14 +23,25 @@ const postService = {
     return posts;
   },
   postById: async (id) => {
-    const posts = await BlogPost.findOne({ where: { id },
-include: [
-      { all: true, nested: true, attributes: { exclude: ['password'] } },
-    ] });
-    return posts;
+    const post = await BlogPost.findOne({
+      where: { id },
+      include: [
+        { all: true, nested: true, attributes: { exclude: ['password'] } },
+      ],
+    });
+    return post;
+  },
+  editPost: async (id, newEditPost) => {
+    const post = await BlogPost.findOne({
+      where: { id },
+      include: [
+        { all: true, nested: true, attributes: { exclude: ['password'] } },
+      ],
+    });
+    await post.update(newEditPost);
+    await post.save();
+    return post;
   },
 };
-
-// postService.postById(1);
 
 module.exports = postService;
