@@ -13,6 +13,15 @@ const postService = {
 
     return newPost;
   },
+  allPost: async () => {
+    const posts = await BlogPost.findAll({
+      include: [
+        { all: true, nested: true, attributes: { exclude: ['password'] } },
+      ],
+    });
+
+    return posts;
+  },
 };
 
 module.exports = postService;

@@ -16,7 +16,6 @@ const categoriesService = {
     const check = categoryIds.every((id) => newPostCategorys.includes(id));
 
     if (!check) {
-      console.log('xablau');
       throw new NotFoundError('"categoryIds" not found', 400);
     }
   },
