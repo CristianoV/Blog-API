@@ -28,6 +28,15 @@ const postController = {
 
     res.status(200).json(allPosts);
   },
+  postById: async (req, res) => {
+    const { id } = req.params;
+    await usersService.validToken(req);
+    const allPosts = await posts.postById(id);
+
+    if (!allPosts) return res.status(404).json({ message: 'Post does not exist' });
+
+    res.status(200).json(allPosts);
+  },
 };
 
 module.exports = postController;
