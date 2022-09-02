@@ -22,6 +22,12 @@ const postController = {
 
     res.status(201).json(newPost);
   },
+  allPost: async (req, res) => {
+    await usersService.validToken(req);
+    const allPosts = await posts.allPost();
+
+    res.status(200).json(allPosts);
+  },
 };
 
 module.exports = postController;
