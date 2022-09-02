@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     // });
     BlogPost.belongsTo(models.User, {
       foreignKey: 'userId',
-      as: 'Users',
+      as: 'user',
     });
   };
 
