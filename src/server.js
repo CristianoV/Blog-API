@@ -25,6 +25,7 @@ app.post('/categories', validate, categories.newCategory);
 app.get('/user', validate, user.getUsers);
 app.get('/user/:id', validate, user.getUsersById);
 app.post('/user', user.postUsers);
+app.delete('/user/me', validate, user.deleteUser);
 
 app.use('*', (req, res) => {
   res.status(404).send('<h1>404</h1>');
