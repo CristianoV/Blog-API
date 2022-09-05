@@ -61,6 +61,24 @@ const postController = {
 
     res.status(200).json(newEditPosts);
   },
+  deletePost: async (req, res) => {
+    const { id } = req.params;
+    await usersService.validToken(req);
+
+    const valid = await usersService.validUser(req);
+
+    const post = await posts.postById(id); 
+
+    if (!post) return res.status(404).json({ message: 'Post does not exist' });
+
+    if (valid.id !== post.userId) {
+      return res.status(401).json({ message: 'Unauthorized user' });
+    }
+
+    await posts.deletePost(id);
+
+    return res.status(204).json();
+  },
 };
 
 module.exports = postController;
