@@ -27,6 +27,15 @@ const usersController = {
     const { code, data } = await usersService.getUsersById(id);
     res.status(code).json(data);
   },
+  deleteUser: async (req, res) => {
+    await usersService.validToken(req);
+
+    const { id } = await usersService.validUser(req);
+
+    await usersService.deleteUsers(id);
+
+    return res.status(204).json();
+  },
 };
 
 module.exports = usersController;
