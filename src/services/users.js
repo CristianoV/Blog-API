@@ -12,6 +12,12 @@ const usersService = {
       throw new NotFoundError('Expired or invalid token', 401);
     }
   },
+  validUser: async (req) => {
+    const { authorization: token } = req.headers;
+    const { email } = tokenHelper.verifyToken(token);
+    const user = await User.findOne({ where: { email } });
+    return user;
+  },
   getUsers: async () => {
     const result = await User.findAll({
       attributes: { exclude: ['password'] },
