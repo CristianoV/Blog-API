@@ -16,6 +16,9 @@ const usersService = {
     const { authorization: token } = req.headers;
     const { email } = tokenHelper.verifyToken(token);
     const user = await User.findOne({ where: { email } });
+    if (!user) {
+      throw new NotFoundError('User does not exist', 404);
+    }
     return user;
   },
   getUsers: async () => {
@@ -45,6 +48,11 @@ const usersService = {
       throw new NotFoundError('User does not exist', 404);
     }
     return { code: 200, data: result };
+  }, 
+  deleteUsers: async (id) => {
+    const user = await User.destroy({ where: { id } });
+
+    return user;
   },
 };
 
