@@ -42,6 +42,11 @@ const postService = {
     await post.save();
     return post;
   },
+  deletePost: async (id) => {
+    const post = await BlogPost.destroy({ where: { id } });
+
+    return post;
+  },
 };
 
 module.exports = postService;
