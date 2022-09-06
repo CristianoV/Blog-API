@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { BlogPost, PostCategory } = require('../database/models');
 
 const postService = {
@@ -44,6 +45,34 @@ const postService = {
   },
   deletePost: async (id) => {
     const post = await BlogPost.destroy({ where: { id } });
+
+    return post;
+  },
+  postByTitle: async (q) => {
+    const post = await BlogPost.findOne({
+      where: {
+        title: {
+          [Op.like]: `%${q}%`,
+        },
+      },
+      include: [
+        { all: true, nested: true, attributes: { exclude: ['password'] } },
+      ],
+    });
+
+    return post;
+  },
+  postByContent: async (q) => {
+    const post = await BlogPost.findOne({
+      where: {
+        content: {
+          [Op.like]: `%${q}%`,
+        },
+      },
+      include: [
+        { all: true, nested: true, attributes: { exclude: ['password'] } },
+      ],
+    });
 
     return post;
   },
