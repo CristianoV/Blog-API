@@ -14,6 +14,7 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
+app.get('/post/search/', validate, post.postByQuery);
 app.post('/login', login.login);
 app.post('/post', validate, post.newPost);
 app.get('/post', validate, post.allPost);
