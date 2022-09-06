@@ -30,6 +30,7 @@ const postController = {
   },
   postById: async (req, res) => {
     const { id } = req.params;
+
     await usersService.validToken(req);
     const post = await posts.postById(id);
 
@@ -78,6 +79,23 @@ const postController = {
     await posts.deletePost(id);
 
     return res.status(204).json();
+  },
+  postByQuery: async (req, res) => {
+    const { q } = req.query;
+
+    await usersService.validToken(req);
+
+    if (!q) {
+      const all = await posts.allPost();
+      return res.status(200).json(all);
+    }
+    const title = await posts.postByTitle(q);
+    if (title) return res.status(200).json([title]);
+
+    const content = await posts.postByContent(q);
+    if (content) return res.status(200).json([content]);
+
+    return res.status(200).json([]);
   },
 };
 
