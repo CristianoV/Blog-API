@@ -19,6 +19,8 @@ Projeto Blogs API project!
  <div align="center">
  
 # Instruções da aplicação
+
+<!---
 ### Instalar dependências
 ```
 cd Blogs-API
@@ -30,6 +32,7 @@ npm install
 cd Blogs-API
 npm run debug
 ```
+-->
 
 ### Rodando aplicação com Docker
 ```
