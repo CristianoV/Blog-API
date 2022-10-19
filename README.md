@@ -20,13 +20,14 @@ Projeto Blogs API project!
  
 # Instruções da aplicação
 
-<!---
+
 ### Instalar dependências
 ```
 cd Blogs-API
 npm install
 ```
-  
+
+<!---
 ### Rodar aplicação sem Docker
 ```
 cd Blogs-API
