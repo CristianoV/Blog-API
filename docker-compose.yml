@@ -13,7 +13,8 @@ services:
     command: bash
     restart: always
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - 3000:3000
     environment:
@@ -31,6 +32,10 @@ services:
       - 33060:33060
     environment:
       MYSQL_ROOT_PASSWORD: password
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
+      timeout: 10s
+      retries: 5
 
 networks:
   default:
