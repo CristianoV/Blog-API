@@ -39,7 +39,6 @@ npm run debug
 ```
 cd Blogs-API
 npm run compose-up
-npm run iniciate-server
 ```
   
   # Rotas
