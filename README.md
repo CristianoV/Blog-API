@@ -31,7 +31,7 @@ npm run debug
 
 ### Rodando aplicação com Docker
 ```
-cd blogs-API
+cd Blogs-API
 npm run compose-up
 npm run iniciate-server
 ```
