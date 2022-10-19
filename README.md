@@ -68,7 +68,11 @@ exemplo:
   "password": "123456"
 }
 ```
-<p>
+<p align="center">
 Todas as rotas necessitam de um Header "authorization" recebido quando se faz login
+Portas 3000 e 3307 sendo utilizadas
+<p/>
+  
+<p align="center">
 Portas 3000 e 3307 sendo utilizadas
 <p/>
