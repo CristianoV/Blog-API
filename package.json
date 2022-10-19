@@ -30,7 +30,10 @@
     "posttest": "npm run kill:test",
     "test-coverage": "jest -i --verbose --forceExit --coverage",
     "debug": "nodemon .",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
+    "compose-up": "(docker-compose up -d --build && docker exec -it blogs_api sh -c 'npm install')",
+    "iniciate-server": "docker exec -it blogs_api sh -c 'npm run start-server'",
+    "start-server": "npm install && npm run prestart && npm run seed && npm run debug"
   },
   "devDependencies": {
     "eslint": "6.8.0",
