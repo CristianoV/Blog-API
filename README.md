@@ -32,12 +32,8 @@ npm run debug
 ### Rodando aplicação com Docker
 ```
 cd blogs-API
-docker-compose up -d
-docker exec -it blogs_api bash
-npm install
-npm run prestart
-npm run seed
-npm run debug
+npm run compose-up
+npm run iniciate-server
 ```
 
 ### login de usuario Cadastrado
