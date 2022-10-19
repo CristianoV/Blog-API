@@ -70,4 +70,5 @@ exemplo:
 ```
 <p>
 Todas as rotas necessitam de um Header "authorization" recebido quando se faz login
+Portas 3000 e 3307 sendo utilizadas
 <p/>
