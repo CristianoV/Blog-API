@@ -1,16 +1,49 @@
-# 🚧 README em construção 🚧
+<h1 align="center">
+Projeto Blogs API project!
+<h1/>
 
-<!-- Olá, Tryber!
+# Contexto
+ Esse projeto é um CRUD que se conecta a um banco de dados MySQL para criar posts e usuários de um Blog.  Para isso é utilizado de diversas ferramentas e implementado a arquitetura __MSC__.
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+# Tecnologias, bibliotecas e arquiteturas usadas
+  * __MySQL__
+  * __Sequelize__
+  * __Node.js__
+  * __Express__
+  * __Nodemon__
+  * __Joi__
+  * __Jwt__
+  * __MSC__
+  * __REST__
 
-É essencial que você preencha esse documento por conta própria, ok?
+# Instruções da aplicação
+### Instalar dependências
+```
+cd blogs-API
+npm install
+```
+  
+### Rodar aplicação sem Docker
+```
+cd blogs-API
+npm run debug
+```
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+### Rodando aplicação com Docker
+```
+cd blogs-API
+docker-compose up -d
+docker exec -it blogs_api bash
+npm install
+npm run prestart
+npm run seed
+npm run debug
+```
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
+### login de usuario Cadastrado
+```
+exemplo: 
+{
+  "email": "lewishamilton@gmail.com",
+  "password": "123456"
+}
